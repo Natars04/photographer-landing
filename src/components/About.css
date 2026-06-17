@@ -1,0 +1,50 @@
+.about {
+  padding: var(--section-padding) 0;
+}
+
+.about__inner {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about__photo {
+  width: 100%;
+  aspect-ratio: 520 / 680;
+  object-fit: cover;
+  display: block;
+}
+
+.about__heading {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 1.75rem;
+  line-height: 1.2;
+}
+
+.about__paragraph {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--color-text-soft);
+  margin-bottom: 1.1rem;
+}
+
+.about__paragraph:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .about__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about__photo {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

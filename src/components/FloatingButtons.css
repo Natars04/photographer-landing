@@ -1,0 +1,50 @@
+.floating-buttons {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.floating-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.floating-btn:hover {
+  background: var(--color-text);
+  color: #ffffff;
+  border-color: var(--color-text);
+}
+
+.floating-btn--top {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.floating-btn--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .floating-buttons {
+    right: 1rem;
+    top: auto;
+    bottom: 5rem;
+    transform: none;
+  }
+}

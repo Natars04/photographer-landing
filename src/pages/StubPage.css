@@ -1,0 +1,23 @@
+.stub-page {
+  min-height: calc(100vh - var(--header-height) - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2.5rem;
+  text-align: center;
+  background: #ffffff;
+}
+
+.stub-page__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+
+.stub-page__text {
+  font-size: 1rem;
+  color: var(--color-text-soft);
+}

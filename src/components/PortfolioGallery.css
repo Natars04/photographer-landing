@@ -1,0 +1,45 @@
+.portfolio-masonry-wrap {
+  padding: 0 2rem 4rem;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.portfolio-masonry {
+  display: flex;
+  margin-left: -16px;
+  width: auto;
+}
+
+.portfolio-masonry__col {
+  padding-left: 16px;
+  background-clip: padding-box;
+}
+
+.portfolio-masonry__item {
+  margin-bottom: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #E5DDD0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.portfolio-masonry__item:hover {
+  opacity: 0.88;
+}
+
+.portfolio-masonry__item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .portfolio-masonry-wrap {
+    padding: 0 1rem 3rem;
+  }
+
+  .portfolio-masonry__item {
+    margin-bottom: 12px;
+  }
+}

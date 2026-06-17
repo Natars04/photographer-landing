@@ -1,0 +1,32 @@
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.contact__links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+
+.contact__link-item {
+  font-size: 1.125rem;
+  color: var(--color-text);
+}
+
+.contact__disclaimer {
+  margin-top: var(--space-xs);
+  font-size: 0.75rem;
+  color: #999;
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .contact {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}

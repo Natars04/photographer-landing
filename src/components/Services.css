@@ -1,0 +1,18 @@
+.services-section {
+  padding: var(--section-padding) 0;
+}
+
+.services-section__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  text-align: center;
+}
+
+.services-section__title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: var(--color-text);
+}

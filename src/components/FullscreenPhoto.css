@@ -1,0 +1,13 @@
+.fullscreen-photo {
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.fullscreen-photo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
