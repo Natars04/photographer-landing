@@ -3,46 +3,55 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import PortfolioGallery from '../components/PortfolioGallery';
+import SessionCards from '../components/SessionCards';
 import './PortfolioPage.css';
 
 const IMAGE_SETS = {
   family: [
-    '/images/gallery/family/family-4.jpg',   // малыш смеётся на руках — самый сильный, золотой боке
-    '/images/gallery/family/family-7.jpg',   // B&W силуэт беременной семьи — другая эмоция
-    '/images/gallery/family/family-2.jpg',   // мама целует малыша в цветах — нежно, цвет после B&W
-    '/images/gallery/family/family-1.jpg',   // два малыша в лесу — общий план, смена масштаба
-    '/images/gallery/family/family-10.jpg',  // B&W щека к щеке — крупный, интимный
-    '/images/gallery/family/family-3.jpg',   // пёс на траве — смена сцены, пауза
-    '/images/gallery/family/family-9.jpg',   // папа с малышом в парке — средний план, радость
-    '/images/gallery/family/family-6.jpg',   // B&W беременная семья у кроватки — нарративный
-    '/images/gallery/family/family-5.jpg',   // мыльные пузыри — цвет, действие
-    '/images/gallery/family/family-8.jpg',   // семья с шаром «2 года» — праздник, финал
-  ],
-  individual: [
-    '/images/gallery/individual/individual-1.jpg',  // B&W портрет через цветы — самый сильный
-    '/images/gallery/individual/individual-9.jpg',  // женщина у сирени, другой человек, полный рост
-    '/images/gallery/individual/individual-6.jpg',  // коллаж мужчина в горах — полная смена
-    '/images/gallery/individual/individual-8.jpg',  // рыжая, золотой час, смеётся
-    '/images/gallery/individual/individual-3.jpg',  // белый образ, парк — средний план
-    '/images/gallery/individual/individual-7.jpg',  // B&W спиной к горам — созерцательно
-    '/images/gallery/individual/individual-11.jpg', // коллаж 4 кадра в лесу
-    '/images/gallery/individual/individual-4.jpg',  // берёзовый лес, улыбка
-    '/images/gallery/individual/individual-5.jpg',  // снежные горы — пейзажный wide
-    '/images/gallery/individual/individual-10.jpg', // поляроид-коллаж лес
-    '/images/gallery/individual/individual-2.jpg',  // та же девушка что в 1, но цвет и в профиль
+    '/images/gallery/family/family-4.jpg',
+    '/images/gallery/family/family-7.jpg',
+    '/images/gallery/family/family-2.jpg',
+    '/images/gallery/family/family-1.jpg',
+    '/images/gallery/family/family-10.jpg',
+    '/images/gallery/family/family-3.jpg',
+    '/images/gallery/family/family-9.jpg',
+    '/images/gallery/family/family-6.jpg',
+    '/images/gallery/family/family-5.jpg',
+    '/images/gallery/family/family-8.jpg',
   ],
   reportage: [
-    '/images/gallery/reportage/reportage-4.jpg',  // крупный план лица мальчика — самый выразительный
-    '/images/gallery/reportage/reportage-9.jpg',  // мама+малыш в цветах, конфетти — широкий, радостный
-    '/images/gallery/reportage/reportage-3.jpg',  // B&W девочка с косами на линейке — нарративный
-    '/images/gallery/reportage/reportage-8.jpg',  // малыш с одуванчиком — нежный крупный план
-    '/images/gallery/reportage/reportage-7.jpg',  // женщина кружится на закате — динамичный wide
-    '/images/gallery/reportage/reportage-1.jpg',  // малыш идёт один по аллее — репортажная глубина
-    '/images/gallery/reportage/reportage-2.jpg',  // B&W зеркало машины — абстрактный детальный
-    '/images/gallery/reportage/reportage-6.jpg',  // женщина у забора в лесу — спокойный
-    '/images/gallery/reportage/reportage-5.jpg',  // группа детей за партой — финальный широкий
+    '/images/gallery/reportage/reportage-4.jpg',
+    '/images/gallery/reportage/reportage-9.jpg',
+    '/images/gallery/reportage/reportage-3.jpg',
+    '/images/gallery/reportage/reportage-8.jpg',
+    '/images/gallery/reportage/reportage-7.jpg',
+    '/images/gallery/reportage/reportage-1.jpg',
+    '/images/gallery/reportage/reportage-2.jpg',
+    '/images/gallery/reportage/reportage-6.jpg',
+    '/images/gallery/reportage/reportage-5.jpg',
   ],
 };
+
+function generateImages(folder, prefix, count) {
+  return Array.from({ length: count }, (_, i) =>
+    `/images/gallery/individual/${folder}/${prefix}-${i + 1}.jpg`
+  );
+}
+
+const INDIVIDUAL_SESSIONS = [
+  {
+    id: 'kovaleva',
+    name: 'Ковалева Татьяна',
+    cover: '/images/gallery/individual/kovaleva/kovaleva-30.jpg',
+    images: generateImages('kovaleva', 'kovaleva', 111),
+  },
+  {
+    id: 'kruchinina',
+    name: 'Кручинина Наталья',
+    cover: '/images/gallery/individual/kruchinina/kruchinina-1.jpg',
+    images: generateImages('kruchinina', 'kruchinina', 56),
+  },
+];
 
 const TABS = [
   { id: 'family',     label: 'Семья и хвостики' },
@@ -58,12 +67,19 @@ export default function PortfolioPage() {
     TABS.map((t) => t.id).includes(initialTab) ? initialTab : 'family'
   );
   const [lightboxIndex, setLightboxIndex] = useState(-1);
-  const images = IMAGE_SETS[activeTab];
-  const slides = images.map((src) => ({ src }));
+  const [selectedSession, setSelectedSession] = useState(null);
+
+  const currentSession = activeTab === 'individual' && selectedSession
+    ? INDIVIDUAL_SESSIONS.find((s) => s.id === selectedSession)
+    : null;
+
+  const images = currentSession ? currentSession.images : IMAGE_SETS[activeTab];
+  const slides = (images || []).map((src) => ({ src }));
 
   const handleTabChange = (id) => {
     setActiveTab(id);
     setLightboxIndex(-1);
+    setSelectedSession(null);
   };
 
   return (
@@ -71,7 +87,7 @@ export default function PortfolioPage() {
       <div className="portfolio-page__header">
         <button
           className="portfolio-page__back-btn"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
           aria-label="Назад"
           title="Назад"
         >
@@ -94,7 +110,34 @@ export default function PortfolioPage() {
         ))}
       </div>
 
-      <PortfolioGallery images={images} onImageClick={setLightboxIndex} />
+      {activeTab === 'individual' && !selectedSession ? (
+        <SessionCards
+          sessions={INDIVIDUAL_SESSIONS}
+          onSessionClick={setSelectedSession}
+        />
+      ) : (
+        <>
+          {activeTab === 'individual' && selectedSession && (
+            <div className="portfolio-page__sub-nav">
+              <button
+                className="portfolio-page__back-btn portfolio-page__back-btn--inline"
+                onClick={() => { setSelectedSession(null); setLightboxIndex(-1); }}
+                aria-label="Назад к сессиям"
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="15 18 9 12 15 6"/>
+                </svg>
+                <span>{currentSession.name}</span>
+              </button>
+            </div>
+          )}
+          {images && images.length > 0 ? (
+            <PortfolioGallery images={images} onImageClick={setLightboxIndex} />
+          ) : (
+            <p className="portfolio-empty">Фотографии скоро появятся</p>
+          )}
+        </>
+      )}
 
       <Lightbox
         open={lightboxIndex >= 0}

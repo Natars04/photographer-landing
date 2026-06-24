@@ -1,0 +1,89 @@
+.session-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.session-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #E5DDD0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+
+.session-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.session-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.session-card:hover .session-card__image {
+  transform: scale(1.04);
+}
+
+.session-card__placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: var(--color-warm-beige, #f5f0e8);
+}
+
+.session-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(
+    to top,
+    rgba(42, 40, 38, 0.55) 0%,
+    rgba(42, 40, 38, 0) 55%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.session-card:hover .session-card__overlay {
+  opacity: 1;
+}
+
+.session-card__name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-align: center;
+}
+
+.session-card:has(.session-card__placeholder) .session-card__overlay {
+  opacity: 1;
+  background: none;
+}
+
+.session-card:has(.session-card__placeholder) .session-card__name {
+  color: var(--color-charcoal-soft, #6b6b6b);
+}
+
+@media (max-width: 640px) {
+  .session-cards {
+    grid-template-columns: 1fr;
+    padding: 0 1rem 3rem;
+  }
+}
