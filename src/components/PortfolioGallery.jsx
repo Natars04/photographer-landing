@@ -4,7 +4,7 @@ import './PortfolioGallery.css';
 const BREAKPOINTS = {
   default: 3,
   1024: 2,
-  640: 1,
+  640: 3,
 };
 
 export default function PortfolioGallery({ images, onImageClick }) {

@@ -19,7 +19,7 @@ export default function About() {
             />
           </div>
           <div className="about__text-col">
-            <h2 className="about__heading">Немного обо мне.</h2>
+            <h2 className="about__heading">Немного обо мне</h2>
             {about.text.map((paragraph, i) => (
               <p key={i} className="about__paragraph">{paragraph}</p>
             ))}

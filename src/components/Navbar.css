@@ -107,6 +107,11 @@
 @media (max-width: 768px) {
   .navbar__inner {
     padding: 0 1.25rem;
+    justify-content: flex-end;
+  }
+
+  .navbar__logo {
+    display: none;
   }
 
   .navbar__burger {

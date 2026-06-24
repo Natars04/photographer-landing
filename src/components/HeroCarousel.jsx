@@ -34,8 +34,10 @@ export default function HeroCarousel() {
           Сохраняю моменты,<br />которые невозможно повторить
         </h1>
         <p className="hero-carousel__subtitle">
-          Фотосессии с животными, природой и близкими —<br />
-          про настоящие чувства, мягкий свет и тихие истории.
+          Семейные и pet-friendly съёмки про жизнь, эмоции и любовь
+        </p>
+        <p className="hero-carousel__subtitle">
+          Приглашаю вас на тёплую фотосессию о самом важном - о вас
         </p>
         <div className="hero-carousel__buttons">
           <a href="#contacts" className="hero-carousel__btn">Записаться</a>

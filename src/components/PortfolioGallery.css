@@ -36,10 +36,20 @@
 
 @media (max-width: 640px) {
   .portfolio-masonry-wrap {
-    padding: 0 1rem 3rem;
+    padding: 0 0.5rem 2rem;
+  }
+
+  .portfolio-masonry {
+    margin-left: -4px;
+  }
+
+  .portfolio-masonry__col {
+    padding-left: 4px;
   }
 
   .portfolio-masonry__item {
-    margin-bottom: 12px;
+    margin-bottom: 4px;
+    border-radius: 0;
+    border: none;
   }
 }
