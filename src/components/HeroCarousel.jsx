@@ -41,7 +41,6 @@ export default function HeroCarousel() {
         </p>
         <div className="hero-carousel__buttons">
           <a href="#contacts" className="hero-carousel__btn">Записаться</a>
-          <a href="#portfolio" className="hero-carousel__btn">Портфолио</a>
         </div>
       </div>
 
