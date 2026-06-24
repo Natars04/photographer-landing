@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { siteContent } from '../data/content';
 import './About.css';
 
 const PHOTO_PLACEHOLDER = '/images/hero/obomne.jpg';
+const PREVIEW_COUNT = 2;
 
 export default function About() {
   const { about } = siteContent;
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <>
@@ -18,11 +21,22 @@ export default function About() {
               className="about__photo"
             />
           </div>
-          <div className="about__text-col">
+          <div className={`about__text-col${expanded ? ' about__text-col--expanded' : ''}`}>
             <h2 className="about__heading">Немного обо мне</h2>
             {about.text.map((paragraph, i) => (
-              <p key={i} className="about__paragraph">{paragraph}</p>
+              <p
+                key={i}
+                className={`about__paragraph${i >= PREVIEW_COUNT ? ' about__paragraph--extra' : ''}`}
+              >
+                {paragraph}
+              </p>
             ))}
+            <button
+              className="about__toggle"
+              onClick={() => setExpanded(!expanded)}
+            >
+              {expanded ? 'Свернуть ▴' : 'Читать дальше ▾'}
+            </button>
           </div>
         </div>
       </section>

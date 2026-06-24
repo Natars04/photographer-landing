@@ -37,6 +37,10 @@
   margin-bottom: 0;
 }
 
+.about__toggle {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .about__inner {
     grid-template-columns: 1fr;
@@ -46,5 +50,30 @@
   .about__photo {
     max-width: 400px;
     margin: 0 auto;
+  }
+
+  .about__paragraph--extra {
+    display: none;
+  }
+
+  .about__text-col--expanded .about__paragraph--extra {
+    display: block;
+  }
+
+  .about__toggle {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0;
+    background: none;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--color-charcoal-soft, #6b6b6b);
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .about__toggle:hover {
+    color: var(--color-text, #2C2C2C);
   }
 }
