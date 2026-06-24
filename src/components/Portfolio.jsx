@@ -9,7 +9,7 @@ const CARDS = [
     tab: 'family',
   },
   {
-    img: '/images/gallery/individual/kovaleva/kovaleva-30.jpg',
+    img: '/images/gallery/individual/kovaleva/kovaleva-45.jpg',
     alt: 'Индивидуальная съёмка',
     caption: 'Индивидуальная съёмка',
     tab: 'individual',
